@@ -6,6 +6,10 @@
   <title>Yudi Ardata — Hacker Professional</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -16,26 +20,26 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       padding: 20px;
     }
 
     h1.hexnoir {
       color: #a30000;
-      font-size: 3em;
+      font-size: 2.8em;
       text-align: center;
-      margin-top: 40px;
-      margin-bottom: 20px;
+      margin: 40px 0 20px;
     }
 
     .top-photo {
       text-align: center;
-      margin: 20px 0;
+      margin-bottom: 25px;
     }
 
     .top-photo img {
-      max-width: 200px;
+      width: 150px;
+      max-width: 90%;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     }
@@ -47,6 +51,18 @@
       margin-bottom: 40px;
     }
 
+    nav {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    nav a {
+      color: #0f0;
+      margin: 0 8px;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
     section {
       margin-bottom: 50px;
     }
@@ -56,67 +72,78 @@
       border-bottom: 1px solid #444;
       padding-bottom: 5px;
       margin-bottom: 20px;
-    }
-
-    nav {
-      text-align: center;
-      margin: 20px 0 30px;
-    }
-
-    nav a {
-      color: #0f0;
-      margin: 0 10px;
-      text-decoration: none;
+      font-size: 1.5em;
     }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
     }
 
     footer {
       text-align: center;
       color: #888;
-      margin: 40px 0;
+      margin-top: 60px;
+      font-size: 0.9em;
+      padding-bottom: 30px;
     }
 
-    /* 🟥 Burung Merah Gerak */
     .bird-container {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 10px;
+      right: 10px;
       z-index: 99;
       animation: fly 4s infinite ease-in-out;
     }
 
     .red-bird {
-      width: 60px;
+      width: 50px;
+      height: auto;
       opacity: 0.9;
       filter: drop-shadow(0 0 6px red);
     }
 
     @keyframes fly {
-      0%   { transform: translateY(0px) rotate(0deg); }
-      50%  { transform: translateY(-10px) rotate(-2deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
 
-    /* Matrix Canvas */
     #matrix {
       position: fixed;
-      z-index: 0;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: 0;
       pointer-events: none;
     }
 
-    /* Konten tetap di atas matrix */
-    header, nav, main, footer, .overlay, .bird-container {
+    header, nav, main, footer, .container, .bird-container {
       position: relative;
       z-index: 1;
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 600px) {
+      h1.hexnoir {
+        font-size: 2em;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px;
+        font-size: 0.95em;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .red-bird {
+        width: 35px;
+      }
     }
   </style>
 </head>
@@ -132,16 +159,16 @@
       <h1 class="hexnoir">HexNoir</h1>
 
       <div class="top-photo">
-        <img src="foto1.jpg">
+        <img src="foto1.jpg" alt="">
       </div>
 
       <p class="subtitle">Yudi Ardata – Cyber Intelligence Operative & Tech Dominator</p>
     </header>
 
     <nav>
-      <a href="#about">About</a>|
-      <a href="#skills">Skills</a>|
-      <a href="#projects">Projects</a>|
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -197,7 +224,6 @@
     </footer>
   </div>
 
-  <!-- Matrix Rain Script -->
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
@@ -214,7 +240,7 @@
       ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "rgba(0, 255, 0, 0.2)";
+      ctx.fillStyle = "rgba(0, 255, 0, 0.15)";
       ctx.font = fontSize + "px monospace";
 
       for (let i = 0; i < drops.length; i++) {
