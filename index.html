@@ -14,13 +14,12 @@
       overflow-x: hidden;
     }
 
-    .glitch.hexnoir {
-      color: red;
-      text-shadow:
-        1px 0 #ff0000,
-        -1px 0 #8b0000,
-        0 1px #ff0000,
-        0 -1px #8b0000;
+    h1.hexnoir {
+      color: #a30000;
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
     }
 
     .top-photo {
@@ -39,7 +38,6 @@
       line-height: 1.6;
     }
 
-    /* 🟥 Burung Merah Gerak */
     .bird-container {
       position: fixed;
       top: 20px;
@@ -61,7 +59,6 @@
       100% { transform: translateY(0px) rotate(0deg); }
     }
 
-    /* 🟩 Efek Matrix */
     #matrix {
       position: fixed;
       z-index: 0;
@@ -72,7 +69,6 @@
       pointer-events: none;
     }
 
-    /* Pastikan konten di atas efek */
     header, nav, main, footer, .overlay, .bird-container {
       position: relative;
       z-index: 1;
@@ -81,28 +77,28 @@
 </head>
 <body>
   <canvas id="matrix"></canvas>
-
   <div class="overlay"></div>
 
-  <!-- 🟥🦅 Burung Merah -->
+  <!-- Burung Merah (tanpa alt "Red Hawk") -->
   <div class="bird-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Red_Bird_Flying_Animated.svg" class="red-bird" alt="Red Hawk">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Red_Bird_Flying_Animated.svg" class="red-bird">
   </div>
 
   <header>
-    <h1 class="glitch hexnoir" data-text="HexNoir">HexNoir</h1>
+    <!-- Solid blood red title -->
+    <h1 class="hexnoir">HexNoir</h1>
 
     <div class="top-photo">
-      <img src="foto1.jpg" alt="Yudi Ardata" />
+      <img src="foto1.jpg">
     </div>
 
-    <p class="subtitle">Yudi Ardata – Cyber Intelligence Operative & Tech Dominator</p>
+    <p class="subtitle" style="text-align: center;">Yudi Ardata – Cyber Intelligence Operative & Tech Dominator</p>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
+  <nav style="text-align: center; margin-bottom: 20px;">
+    <a href="#about">About</a> |
+    <a href="#skills">Skills</a> |
+    <a href="#projects">Projects</a> |
     <a href="#contact">Contact</a>
   </nav>
 
@@ -167,11 +163,11 @@
     </section>
   </main>
 
-  <footer>
+  <footer style="text-align: center; margin-top: 40px;">
     Yudi Ardata • Born in Data, Raised by Exploits.
   </footer>
 
-  <!-- 🧠 JavaScript: Matrix Code Rain -->
+  <!-- JavaScript Matrix Code Rain -->
   <script>
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
