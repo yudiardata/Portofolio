@@ -5,16 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yudi Ardata — Hacker Professional</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Efek warna merah khusus HexNoir */
+    .glitch.hexnoir {
+      color: red;
+      text-shadow:
+        1px 0 #ff0000,
+        -1px 0 #8b0000,
+        0 1px #ff0000,
+        0 -1px #8b0000;
+    }
+
+    .top-photo {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .top-photo img {
+      max-width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+    }
+  </style>
 </head>
 <body>
   <div class="overlay"></div>
-  
-  <div class="top-photo" style="text-align: center; margin-top: 20px;">
-    <img src="foto1.jpg" alt="Yudi Ardata" style="max-width: 200px; border-radius: 10px;" />
-  </div>
 
   <header>
-    <h1 class="glitch" data-text="H4CK3R">H4CK3R</h1>
+    <h1 class="glitch hexnoir" data-text="HexNoir">HexNoir</h1>
+
+    <!-- Foto di bawah tulisan HexNoir -->
+    <div class="top-photo">
+      <img src="foto1.jpg" alt="Yudi Ardata" />
+    </div>
+
     <p class="subtitle">Yudi Ardata – Cyber Intelligence Operative & Tech Dominator</p>
   </header>
 
