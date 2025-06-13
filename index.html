@@ -6,7 +6,14 @@
   <title>Yudi Ardata — Hacker Professional</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Efek warna merah khusus HexNoir */
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
     .glitch.hexnoir {
       color: red;
       text-shadow:
@@ -26,15 +33,65 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
     }
+
+    #about p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* 🟥 Burung Merah Gerak */
+    .bird-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      animation: fly 4s infinite ease-in-out;
+    }
+
+    .red-bird {
+      width: 60px;
+      height: auto;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 6px red);
+    }
+
+    @keyframes fly {
+      0%   { transform: translateY(0px) rotate(0deg); }
+      50%  { transform: translateY(-10px) rotate(-2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* 🟩 Efek Matrix */
+    #matrix {
+      position: fixed;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* Pastikan konten di atas efek */
+    header, nav, main, footer, .overlay, .bird-container {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
+  <canvas id="matrix"></canvas>
+
   <div class="overlay"></div>
+
+  <!-- 🟥🦅 Burung Merah -->
+  <div class="bird-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Red_Bird_Flying_Animated.svg" class="red-bird" alt="Red Hawk">
+  </div>
 
   <header>
     <h1 class="glitch hexnoir" data-text="HexNoir">HexNoir</h1>
 
-    <!-- Foto di bawah tulisan HexNoir -->
     <div class="top-photo">
       <img src="foto1.jpg" alt="Yudi Ardata" />
     </div>
@@ -53,14 +110,17 @@
     <section id="about">
       <h2>About Me</h2>
       <p>
-        I am Yudi Ardata, a cybersecurity strategist and digital threat expert.  
+        I am Yudi Ardata, a cybersecurity strategist and digital threat expert.
         I specialize in identifying, analyzing, and exploiting vulnerabilities across critical systems and architectures.
+      </p>
+      <p>
         My work combines technical precision with strategic thinking, bridging the gap between offensive operations and defensive engineering.
       </p>
-      
       <p>
-        I do not simply break systems — I understand them, control them, and reshape them.  
+        I do not simply break systems — I understand them, control them, and reshape them.
         With a background in ethical hacking and red team simulations, my approach goes beyond tools — it’s about mindset, execution, and results.
+      </p>
+      <p>
         In the evolving war of information, I operate in silence and strike with precision.
       </p>
     </section>
@@ -108,7 +168,47 @@
   </main>
 
   <footer>
-     Yudi Ardata • Born in Data, Raised by Exploits.
+    Yudi Ardata • Born in Data, Raised by Exploits.
   </footer>
+
+  <!-- 🧠 JavaScript: Matrix Code Rain -->
+  <script>
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01AEXYZハッカー十ロパラメタ$#".split("");
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }, () => 1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
 </body>
 </html>
