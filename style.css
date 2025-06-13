@@ -1,1 +1,220 @@
-[REDACTED FOR BREVITY]
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Consolas', monospace;
+}
+
+body {
+  background: #000;
+  color: #33ff33;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== BACKGROUND OVERLAY ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.04),
+    rgba(0, 255, 0, 0.04) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  opacity: 0.07;
+  z-index: -1;
+}
+
+/* ===== HEADER ===== */
+header {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.glitch {
+  font-size: 4rem;
+  color: #33ff33;
+  text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
+  animation: glitch 1.5s infinite;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  margin-top: 0.5rem;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #0f0;
+  border-bottom: 1px solid #0f0;
+  background: rgba(0, 255, 0, 0.05);
+}
+
+nav a {
+  color: #33ff33;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: #33ff33;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== MAIN ===== */
+main {
+  padding: 2rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+/* ===== SECTION HEADERS ===== */
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #0f0;
+  padding-bottom: 0.5rem;
+}
+
+/* ===== ABOUT ===== */
+.photo-gallery {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.photo-gallery img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #33ff33;
+  box-shadow: 0 0 15px rgba(51, 255, 51, 0.5);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* ===== SKILLS ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.skills-grid div {
+  background: rgba(0, 255, 0, 0.05);
+  border: 1px solid #33ff33;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.skills-grid div:hover {
+  background: rgba(0, 255, 0, 0.15);
+}
+
+/* ===== PROJECTS ===== */
+.project-card {
+  background: rgba(0, 255, 0, 0.05);
+  border: 1px solid #33ff33;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  transition: background 0.3s ease;
+}
+
+.project-card:hover {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.project-card a {
+  color: #00ff99;
+  text-decoration: none;
+  border-bottom: 1px dashed #33ff33;
+}
+
+.project-card a:hover {
+  color: #66ffcc;
+}
+
+/* ===== CONTACT ===== */
+#contact p {
+  margin: 0.4rem 0;
+}
+
+#contact a {
+  color: #00ff99;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+  color: #66ffcc;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(0, 255, 0, 0.05);
+  font-size: 0.9rem;
+  color: #33ff33;
+  border-top: 1px dashed #0f0;
+}
+
+/* ===== GLITCH ANIMATION ===== */
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 #0f0, -2px 0 #0f0;
+  }
+  20% {
+    text-shadow: -2px 2px #0f0, 2px -2px #0f0;
+  }
+  40% {
+    text-shadow: 2px -2px #0f0, -2px 2px #0f0;
+  }
+  60% {
+    text-shadow: -2px -2px #0f0, 2px 2px #0f0;
+  }
+  80% {
+    text-shadow: 2px 2px #0f0, -2px -2px #0f0;
+  }
+  100% {
+    text-shadow: 2px 0 #0f0, -2px 0 #0f0;
+  }
+}
